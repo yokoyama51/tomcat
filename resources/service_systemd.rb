@@ -18,6 +18,10 @@ provides :tomcat_service, platform: 'ubuntu' do |node|
   node['platform_version'].to_f >= 15.10
 end
 
+provides :tomcat_service, platform: 'raspbian' do |node|
+  node['platform_version'].to_i >= 8
+end
+
 property :instance_name, String, name_property: true
 property :install_path, String
 property :tomcat_user, String, default: lazy { |r| "tomcat_#{r.instance_name}" }
